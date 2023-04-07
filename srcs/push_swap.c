@@ -13,32 +13,18 @@
 #include "../includes/push_swap.h"
 
 /*
-Print "error" and exit the program in case of an incorrect entry
-*/
-
-void	ft_error(int error)
-{
-	ft_printf("error\n");
-	exit(1);
-}
-
-/*
 Test if only digits are entered in command line arguments, if the number 
 enters in a int and if 2 numbers are the same
 */
 
-int	ft_parsing(int ac, char **av)
+int	ft_parsing(int ac, char **av, int *pile_a)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 	long	max_int;
 	long	min_int;
 	int		ret;
-	int		*pile_a;
 
-	pile_a = ft_calloc(ac, sizeof(int));
-	if(!pile_a)
-		ft_error(1);
 	i = 1;
 	max_int = 2147483647;
 	min_int	= -2147483648;
@@ -56,7 +42,7 @@ int	ft_parsing(int ac, char **av)
 		i++;
 	}
 	i = 1;
-	while (i < ac)
+	while ((int)i < ac)
 	{
 		pile_a[i - 1] = ft_atoi(av[i]);
 		i++;
@@ -67,12 +53,24 @@ int	ft_parsing(int ac, char **av)
 
 int	main(int argc, char **argv)
 {
-	int error;
+	int		*pile_a;
+	int		error;
 
-	error = ft_parsing(argc, argv);
+	t_first *list = init();
+	pile_a = ft_calloc(argc, sizeof(int));
+	if(!pile_a)
+		ft_error();
+	error = ft_parsing(argc, argv, pile_a);
 	if (error == 1)
-	{
-		ft_error(error);
-	}
-
+		ft_error();
+	if (argc == 3)
+		ft_two_numbers(pile_a);
+	if (argc == 4)
+		ft_three_numbers(pile_a);
+	insertion(list, 4);
+    insertion(list, 8);
+    insertion(list, 15);
+    destroy(list);
+    display_list(list);
+	return (0);
 }

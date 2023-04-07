@@ -10,4 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
 
+/*
+Print "error" and exit the program in case of an incorrect entry
+*/
+
+void	ft_error(void)
+{
+	ft_printf("error\n");
+	exit(1);
+}

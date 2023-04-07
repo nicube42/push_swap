@@ -1,38 +1,41 @@
+PATH_SRC =			./srcs/
+PATH_LIBFT =		./libft_printf/
+PATH_OBJS =			./objs/
+
+LIBFT = $(PATH_LIBFT)libftprintf.a
 NAME = push_swap
 
-LIBFT_PATH = libft_printf
-LIBFT = libftprintf.a
+FILES = $(PATH_SRC)push_swap.c $(PATH_SRC)misc.c $(PATH_SRC)small_stack.c $(PATH_SRC)linked_list.c
+OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(FILES))
 
-SRC_FILES = push_swap.c \
-			misc.c \
+CC = clang
+CFLAGS = -Wextra -Werror -Wall
+RM = rm -rf
 
-SRC_DIR = srcs/
-SRC = ${addprefix ${SRC_DIR}, ${SRC_FILES}}
-OBJ = ${SRC:.c=.o}
+all: $(NAME)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar -rcs
+$(NAME): $(OBJS)
+	@echo objects done!!
+	@$(MAKE) -C $(PATH_LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo program done!
 
-%.o: %.c
-	${CC} -c $< -o $@
-	
-all: ${NAME}
-
-libf:
-	@MAKE -sC ${LIBFT_PATH}
-
-${NAME}: libf ${OBJ}
-	${CC} ${LIBFT_PATH}/${LIBFT} ${OBJ} -o ${NAME}
+$(PATH_OBJS)%.o:	$(PATH_SRC)%.c
+	@mkdir -p $(PATH_OBJS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f ${OBJ}
-	${MAKE} -C ${LIBFT_PATH} clean
+	$(RM) $(PATH_OBJS)
+	@echo obj removed!
 
 fclean: clean
-	rm -f ${NAME}
-	${MAKE} -C ${LIBFT_PATH} fclean
+	make fclean -C $(PATH_LIBFT)
+	$(RM) $(NAME)
+	@echo clean everything
 
 re: fclean all
 
-.PHONY: all clean flcean re
+norme: 
+	norminette $(PATH_SRC) $(PATH_LIBFT) ./includes
+
+.PHONY: re all fclean clean norme
