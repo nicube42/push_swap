@@ -12,29 +12,37 @@
 
 #include "../includes/push_swap.h"
 
-t_first	*init()
+t_first	*ft_init_list()
 {
 	t_first *first = malloc(sizeof(*first));
+    t_first *previous = malloc(sizeof(*previous));
 	t_list *content = malloc(sizeof(*content));
-	if (first == NULL || content == NULL)
+	if (first == NULL || content == NULL || previous == NULL)
 		exit(1);
 	content->content = 0;
 	content->next = NULL;
-	first->first = content;
+    content->previous = NULL;
+	first->first = NULL;
+    first->last = NULL;
 	return (first);
 }
 
-void	insertion(t_first *first, int new_nbr)
+void	ft_insert_list(t_first *first, int new_nbr)
 {
     t_list *new = malloc(sizeof(*new));
     if (first == NULL || new == NULL)
         exit(1);
     new->content = new_nbr;
     new->next = first->first;
+    new->previous = NULL;
     first->first = new;
+    if (new->next)
+        new->next->previous = new;
+    if (first->last == NULL)
+        first->last = new;
 }
 
-void	destroy(t_first *first)
+void	ft_destroy_list(t_first *first)
 {
     if (first == NULL)
         exit(1);
@@ -47,7 +55,7 @@ void	destroy(t_first *first)
     }
 }
 
-void	display_list(t_first *first)
+void	ft_display_list(t_first *first)
 {
     if (first == NULL)
         exit(1);

@@ -17,14 +17,18 @@ Test if only digits are entered in command line arguments, if the number
 enters in a int and if 2 numbers are the same
 */
 
-int	ft_parsing(int ac, char **av, int *pile_a)
+int	ft_parsing(int ac, char **av, t_first *first)
 {
 	size_t	i;
 	size_t	j;
 	long	max_int;
 	long	min_int;
 	int		ret;
+	int		*stack;
 
+	stack = ft_calloc(ac, sizeof(int));
+	if(!stack)
+		ft_error();
 	i = 1;
 	max_int = 2147483647;
 	min_int	= -2147483648;
@@ -44,33 +48,43 @@ int	ft_parsing(int ac, char **av, int *pile_a)
 	i = 1;
 	while ((int)i < ac)
 	{
-		pile_a[i - 1] = ft_atoi(av[i]);
+		stack[i - 1] = ft_atoi(av[i]);
 		i++;
 	}
-	ret = ft_isduplicate(ac, pile_a);
+	ret = ft_isduplicate(ac, stack);
+	ft_fill_list(ac, av, first);
 	return (ret);
+}
+
+void	ft_fill_list(int ac, char **av, t_first *first)
+{
+	int	i;
+
+	i = 1;
+	while ((int)i < ac)
+	{
+		ft_insert_list(first, ft_atoi(av[ac - i]));
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	int		*pile_a;
 	int		error;
+	t_first	*first;
 
-	t_first *list = init();
-	pile_a = ft_calloc(argc, sizeof(int));
-	if(!pile_a)
+	first = ft_init_list();
+	first = ft_calloc(argc, sizeof(int));
+	if(!first)
 		ft_error();
-	error = ft_parsing(argc, argv, pile_a);
+	error = ft_parsing(argc, argv, first);
 	if (error == 1)
 		ft_error();
 	if (argc == 3)
-		ft_two_numbers(pile_a);
+		ft_two_numbers(first);
 	if (argc == 4)
-		ft_three_numbers(pile_a);
-	insertion(list, 4);
-    insertion(list, 8);
-    insertion(list, 15);
-    destroy(list);
-    display_list(list);
+		ft_three_numbers(first);
+    //ft_destroy_list(list);
+    ft_display_list(first);
 	return (0);
 }

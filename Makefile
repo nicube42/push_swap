@@ -5,7 +5,7 @@ PATH_OBJS =			./objs/
 LIBFT = $(PATH_LIBFT)libftprintf.a
 NAME = push_swap
 
-FILES = $(PATH_SRC)push_swap.c $(PATH_SRC)misc.c $(PATH_SRC)small_stack.c $(PATH_SRC)linked_list.c
+FILES = $(PATH_SRC)push_swap.c $(PATH_SRC)misc.c $(PATH_SRC)small_stack.c $(PATH_SRC)linked_list.c $(PATH_SRC)instructions.c
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(FILES))
 
 CC = clang
