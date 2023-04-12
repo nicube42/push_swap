@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@42lausanne.ch>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/07 15:27:23 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:51:02 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,30 @@ void	ft_insert_list(t_first *first, int new_nbr)
 
 void	ft_destroy_list(t_first *first)
 {
-    if (first == NULL)
-        exit(1);
+    t_list  *to_del;
 
-    if (first->first != NULL)
+    to_del = first->first;
+    if (to_del == first->first)
     {
-        t_list *to_del = first->first;
-        first->first = first->first->next;
-        free(to_del);
+        if(to_del->next != NULL)
+            to_del->next->previous = NULL;
+			
+        first->first = to_del->next;
+	}
+    else
+        to_del->previous->next = to_del->next;
+
+    if (to_del == first->last)
+    {
+        first->last = to_del->previous;
+
+        if (to_del->previous != NULL)
+            to_del->previous->next = NULL;
     }
+    else
+        to_del->next->previous = to_del->previous;
+
+    free(to_del);
 }
 
 void	ft_display_list(t_first *first)
