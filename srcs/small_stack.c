@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:51:26 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/12 17:37:00 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/12 19:56:58 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_three_numbers(t_first *first, int selection)
 		ft_rotate(first, selection);
 }
 
+ft_is_biggest
+
 void	ft_4_5_numbers(t_first *first_a, t_first *first_b, int argc)
 {
 	t_list	*stack_a;
@@ -65,8 +67,9 @@ void	ft_4_5_numbers(t_first *first_a, t_first *first_b, int argc)
 	while (argc >= 5)
 	{
 		i = 0;
-		while (first_a->first->content < first_b->first->content && first_b != NULL)
+		while (first_a->first->content < first_b->first->content && i <= argc - 2)
 		{
+			ft_printf("%d", i);
 			ft_rotate(first_a, 0);
 			i++;
 		}
