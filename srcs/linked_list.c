@@ -27,7 +27,7 @@ t_first	*ft_init_list()
 	return (first);
 }
 
-void	ft_insert_list(t_first *first, int new_nbr)
+void	ft_insert_before_list(t_first *first, int new_nbr)
 {
     t_list *new = malloc(sizeof(*new));
     if (first == NULL || new == NULL)
@@ -41,6 +41,20 @@ void	ft_insert_list(t_first *first, int new_nbr)
     if (first->last == NULL)
         first->last = new;
 }
+
+void	ft_insert_list(t_first *first, int new_nbr)
+{
+	t_list *new = malloc(sizeof(*new));
+	new->previous = first->last;
+	new->next = NULL;
+	new->content = new_nbr;
+	if (first->first == NULL)
+		first->first = new;
+	if (first->last != NULL)
+		first->last->next = new;
+	first->last = new;
+}
+
 
 void	ft_destroy_list(t_first *first)
 {

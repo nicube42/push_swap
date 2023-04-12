@@ -63,7 +63,7 @@ void	ft_fill_list(int ac, char **av, t_first *first)
 	i = 1;
 	while ((int)i < ac)
 	{
-		ft_insert_list(first, ft_atoi(av[ac - i]));
+		ft_insert_list(first, ft_atoi(av[i]));
 		i++;
 	}
 }
@@ -72,10 +72,15 @@ int	main(int argc, char **argv)
 {
 	int		error;
 	t_first	*first;
+	t_first	*first_b;
 
 	first = ft_init_list();
+	first_b = ft_init_list();
 	first = ft_calloc(argc, sizeof(int));
 	if(!first)
+		ft_error();
+	first_b = ft_calloc(argc, sizeof(int));
+	if(!first_b)
 		ft_error();
 	error = ft_parsing(argc, argv, first);
 	if (error == 1)
@@ -85,6 +90,8 @@ int	main(int argc, char **argv)
 	if (argc == 4)
 		ft_three_numbers(first);
     //ft_destroy_list(list);
+	ft_push(first, first_b);
     ft_display_list(first);
+	ft_display_list(first_b);
 	return (0);
 }
