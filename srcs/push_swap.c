@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 15:07:01 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:13:20 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,10 @@ int	main(int argc, char **argv)
 		ft_two_numbers(first, 0);
 	if (argc == 4)
 		ft_three_numbers(first, 0);
-	if (argc == 5 || argc == 6)
+	if (argc == 5)
 		ft_four_numbers(first, first_b);
+	if (argc == 6)
+		ft_five_numbers(first, first_b);
     //ft_destroy_list(list);
     ft_display_list(first);
 	ft_display_list(first_b);

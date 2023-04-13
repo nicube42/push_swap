@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 15:02:23 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:12:17 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int		main(int argc, char **argv);
 int		ft_parsing(int ac, char **av, t_first *list);
 void	ft_fill_list(int ac, char **av, t_first *list);
 
-void	ft_error(void);
-int		ft_is_biggest(t_first *first);
-void	ft_index(t_first *first);
-
-
 void	ft_two_numbers(t_first *first, int selection);
 void	ft_three_numbers(t_first *first, int selection);
 void	ft_four_numbers(t_first *first_a, t_first *first_b);
+void	ft_five_numbers(t_first *first_a, t_first *first_b);
+
+void	ft_error(void);
+int		ft_is_biggest(t_first *first);
+void	ft_index(t_first *first);
 
 t_first	*ft_init_list();
 void	ft_insert_before_list(t_first *first, int new_nbr);
