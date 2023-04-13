@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 18:12:17 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 21:33:43 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_five_numbers(t_first *first_a, t_first *first_b);
 
 void	ft_error(void);
 int		ft_is_biggest(t_first *first);
+int	ft_is_smallest(t_first *first);
 void	ft_index(t_first *first);
 
 t_first	*ft_init_list();

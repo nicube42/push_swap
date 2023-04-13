@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 15:07:04 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/13 21:33:29 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ int	ft_is_biggest(t_first *first)
 		stack = stack->next;
 	}
 	first->biggest = tmp;
+	return (tmp->content);
+}
+
+int	ft_is_smallest(t_first *first)
+{
+	t_list	*stack;
+	t_list	*tmp;
+
+	stack = first->first;
+	tmp = first->first;
+	while (stack != NULL)
+	{
+		if (stack->content < tmp->content)
+			tmp = stack;
+		stack = stack->next;
+	}
 	return (tmp->content);
 }
 
