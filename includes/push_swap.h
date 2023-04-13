@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 21:51:42 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 22:56:22 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ void	ft_two_numbers(t_first *first, int selection);
 void	ft_three_numbers(t_first *first, int selection);
 void	ft_four_numbers(t_first *first_a, t_first *first_b);
 void	ft_five_numbers(t_first *first_a, t_first *first_b);
-void	ft_push_back(t_first *first, t_first *first_b);
+void	ft_select_small(t_first *first_a, t_first *first_b, int argc);
 
 void	ft_error(void);
 int		ft_is_biggest(t_first *first);
 int		ft_is_smallest(t_first *first);
 void	ft_index(t_first *first);
+void	ft_push_back(t_first *first, t_first *first_b);
 
 t_first	*ft_init_list();
 void	ft_insert_before_list(t_first *first, int new_nbr);

@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 21:33:29 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 23:07:46 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,66 @@ int	ft_is_smallest(t_first *first)
 
 void	ft_index(t_first *first)
 {
-	t_list	*tmp;
-	t_list	*tmp_smallest;
+	t_list	*stack;
+	t_list	*stack_smallest;
 	int		i;
 
 	i = 1;
 	ft_is_biggest(first);
 	while (i <= first->count)
 	{
-		tmp_smallest = first->biggest;
-		tmp = first->first;
-		while (tmp != NULL)
+		stack_smallest = first->biggest;
+		stack = first->first;
+		while (stack != NULL)
 		{
-			if (tmp->index < 1)
+			if (stack->index < 1)
 			{
-				if (tmp->content < tmp_smallest->content)
-					tmp_smallest = tmp;
+				if (stack->content < stack_smallest->content)
+					stack_smallest = stack;
 			}
-			tmp = tmp->next;
+			stack = stack->next;
 		}
-		tmp_smallest->index = i;
+		stack_smallest->index = i;
 		i++;
+	}
+}
+
+void	ft_push_back(t_first *first_a, t_first *first_b)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	stack_a = first_a->first;
+	stack_b = first_b->first;
+	while (stack_a != NULL)
+	{
+		ft_index(first_a);
+		if (first_a->first->content < first_b->first->content)
+		{
+			if (stack_b->index <= 2)
+			{
+				while (first_a->first->content != ft_is_biggest(first_a))
+					ft_rotate(first_a, 0);
+			}
+			else
+			{
+				while (first_a->first->content != ft_is_biggest(first_a))
+					ft_reverse_rotate(first_a, 0);
+			}
+		}
+		else
+		{
+			if (stack_b->index <= 2)
+			{
+				while (first_a->first->content != ft_is_smallest(first_a))
+					ft_rotate(first_a, 0);
+			}
+			else
+			{
+				while (first_a->first->content != ft_is_smallest(first_a))
+					ft_reverse_rotate(first_a, 0);
+			}
+		}
+		stack_a = stack_a->next;
 	}
 }

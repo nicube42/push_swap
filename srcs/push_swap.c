@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 18:13:20 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 22:59:07 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,25 +76,11 @@ int	main(int argc, char **argv)
 
 	first = ft_init_list();
 	first_b = ft_init_list();
-	first = ft_calloc(argc, sizeof(int));
-	if(!first)
-		ft_error();
-	first_b = ft_calloc(argc, sizeof(int));
-	if(!first_b)
-		ft_error();
 	error = ft_parsing(argc, argv, first);
-	//ft_index(first);
 	if (error == 1)
 		ft_error();
-	if (argc == 3)
-		ft_two_numbers(first, 0);
-	if (argc == 4)
-		ft_three_numbers(first, 0);
-	if (argc == 5)
-		ft_four_numbers(first, first_b);
-	if (argc == 6)
-		ft_five_numbers(first, first_b);
-    //ft_destroy_list(list);
+	if (argc <= 6)
+		ft_select_small(first, first_b, argc);
     ft_display_list(first);
 	ft_display_list(first_b);
 	return (0);
