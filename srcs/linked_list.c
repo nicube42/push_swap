@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/12 16:51:02 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 14:35:22 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_first	*ft_init_list()
 	content->content = 0;
 	content->next = NULL;
     content->previous = NULL;
+    first->count = 0;
+    content->index = 0;
 	first->first = NULL;
     first->last = NULL;
 	return (first);
@@ -40,6 +42,7 @@ void	ft_insert_before_list(t_first *first, int new_nbr)
         new->next->previous = new;
     if (first->last == NULL)
         first->last = new;
+    first->count++;
 }
 
 void	ft_insert_list(t_first *first, int new_nbr)
@@ -53,6 +56,7 @@ void	ft_insert_list(t_first *first, int new_nbr)
 	if (first->last != NULL)
 		first->last->next = new;
 	first->last = new;
+    first->count++;
 }
 
 
@@ -70,7 +74,6 @@ void	ft_destroy_list(t_first *first)
 	}
     else
         to_del->previous->next = to_del->next;
-
     if (to_del == first->last)
     {
         first->last = to_del->previous;
@@ -80,8 +83,8 @@ void	ft_destroy_list(t_first *first)
     }
     else
         to_del->next->previous = to_del->previous;
-
     free(to_del);
+    first->count--;
 }
 
 void	ft_display_list(t_first *first)

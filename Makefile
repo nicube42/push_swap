@@ -12,6 +12,8 @@ CC = clang
 CFLAGS = -Wextra -Werror -Wall
 RM = rm -rf
 
+GUI = python3 pyviz.py `ruby -e "puts (0..5).to_a.shuffle.join(' ')"`
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -37,5 +39,9 @@ re: fclean all
 
 norme: 
 	norminette $(PATH_SRC) $(PATH_LIBFT) ./includes
+
+gui : all
+	@$(GUI)
+	@make fclean
 
 .PHONY: re all fclean clean norme

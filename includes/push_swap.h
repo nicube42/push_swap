@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/12 16:01:11 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/13 15:02:23 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct		s_list
 {
 	int				content;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*previous;
 }					t_list;
@@ -28,6 +29,9 @@ typedef struct		s_first
 {
 	struct s_list	*first;
 	struct s_list	*last;
+	struct s_list	*biggest;
+	int				count;
+
 }					t_first;
 
 int		main(int argc, char **argv);
@@ -35,10 +39,13 @@ int		ft_parsing(int ac, char **av, t_first *list);
 void	ft_fill_list(int ac, char **av, t_first *list);
 
 void	ft_error(void);
+int		ft_is_biggest(t_first *first);
+void	ft_index(t_first *first);
+
 
 void	ft_two_numbers(t_first *first, int selection);
 void	ft_three_numbers(t_first *first, int selection);
-void	ft_4_5_numbers(t_first *first_a, t_first *first_b, int argc);
+void	ft_four_numbers(t_first *first_a, t_first *first_b);
 
 t_first	*ft_init_list();
 void	ft_insert_before_list(t_first *first, int new_nbr);
