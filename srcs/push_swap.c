@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 10:56:57 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:58:44 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,18 @@ void	ft_check_if_sorted(t_first *first)
 	exit (0);
 }
 
+void	ft_test_index(t_first *first_a)
+{
+	t_list *list;
+
+	list = first_a->first;
+	while (list)
+	{
+		ft_printf("%d = %d\n",list->content, list->index);
+		list = list->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int		error;
@@ -95,8 +107,14 @@ int	main(int argc, char **argv)
 	if (error == 1)
 		ft_error();
 	ft_check_if_sorted(first);
+	ft_index(first);
 	if (argc <= 6)
 		ft_select_small(first, first_b, argc);
+	else
+	{
+		ft_find_max_shift(first);
+		ft_radix(first, first_b, 0);
+	}
     ft_display_list(first);
 	ft_display_list(first_b);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:47:54 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 17:45:08 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/14 13:49:10 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,26 @@ void	ft_reverse_rotate(t_first *first, int selection)
 void	ft_rotate(t_first *first, int selection)
 {
 	int		tmp;
+	int		tmp2;
 	t_list	*stack;
 
 	stack = first->first;
 	if (stack == NULL || stack->next == NULL)
 		return ;
 	tmp = stack->content;
+	tmp2 = stack->index;
 	while (stack != NULL)
 	{
 		if (stack->next == NULL)
-				stack->content = tmp;
+		{
+			stack->content = tmp;
+			stack->index = tmp2;
+		}
 		else
+		{
 			stack->content = stack->next->content;
+			stack->index = stack->next->index;
+		}
 		stack = stack->next;
 	}
 	if (selection == 0)

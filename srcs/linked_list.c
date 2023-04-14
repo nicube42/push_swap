@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 14:35:22 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:58:07 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_first	*ft_init_list()
     content->previous = NULL;
     first->count = 0;
     content->index = 0;
+    first->max_shift = 0;
 	first->first = NULL;
     first->last = NULL;
 	return (first);

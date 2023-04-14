@@ -12,7 +12,7 @@ CC = clang
 CFLAGS = -Wextra -Werror -Wall
 RM = rm -rf
 
-GUI = python3 pyviz.py `ruby -e "puts (1..4).to_a.shuffle.join(' ')"`
+GUI = python3 pyviz.py `ruby -e "puts (1..10).to_a.shuffle.join(' ')"`
 
 all: $(NAME)
 

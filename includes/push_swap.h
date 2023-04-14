@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 10:58:02 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:35:02 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft_printf/includes/libft.h"
 # include "../libft_printf/includes/ft_printf.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
 	int				content;
 	int				index;
@@ -25,14 +25,20 @@ typedef struct		s_list
 	struct s_list	*previous;
 }					t_list;
 
-typedef struct		s_first
+typedef struct s_first
 {
 	struct s_list	*first;
 	struct s_list	*last;
 	struct s_list	*biggest;
 	int				count;
-
+	int				max_shift;
 }					t_first;
+
+typedef struct s_glob
+{
+	int				content;
+	int				count;
+}				t_glob;
 
 int		main(int argc, char **argv);
 int		ft_parsing(int ac, char **av, t_first *list);
@@ -61,5 +67,12 @@ void    ft_swap(t_first *list, int selection);
 void    ft_reverse_rotate(t_first *first, int selection);
 void    ft_rotate(t_first *first, int selection);
 void    ft_push(t_first *first, t_first *first_b, int selection);
+
+void	ft_find_max_shift(t_first *first);
+void	ft_radix(t_first *first_a, t_first *first_b, int shift);
+
+
+void	ft_test_index(t_first *first_a);
+
 
 #endif
