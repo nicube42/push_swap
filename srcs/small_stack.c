@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:51:26 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/13 22:55:59 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/14 10:43:54 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ void	ft_four_numbers(t_first *first_a, t_first *first_b)
 	stack_b = first_b->first;
 	ft_push(first_a, first_b, 1);
 	ft_three_numbers(first_a, 0);
-	ft_push_back(first_a, first_b);
-	if (first_a->first->content < first_b->first->content)
-		ft_rotate(first_a, 0);
+	ft_prepare_push(first_a, first_b);
 	ft_push(first_b, first_a, 0);
-	if (first_a->last->content < first_a->first->content)
+	if (first_a->first->content != ft_is_smallest(first_a))
 		ft_rotate(first_a, 0);
 }
 
@@ -71,13 +69,11 @@ void	ft_five_numbers(t_first *first_a, t_first *first_b)
 	ft_push(first_a, first_b, 1);
 	ft_push(first_a, first_b, 1);
 	ft_three_numbers(first_a, 0);
-	ft_push_back(first_a, first_b);
+	ft_prepare_push(first_a, first_b);
 	ft_push(first_b, first_a, 0);
-	ft_push_back(first_a, first_b);
-	if (first_a->first->content < first_b->first->content)
-		ft_rotate(first_a, 0);
+	ft_prepare_push(first_a, first_b);
 	ft_push(first_b, first_a, 0);
-	if (first_a->last->content < first_a->first->content)
+	while (first_a->first->content != ft_is_smallest(first_a))
 		ft_rotate(first_a, 0);
 }
 
