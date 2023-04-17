@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   small_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:51:26 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 10:43:54 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:59:15 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+ * Sort two numbers
+*/
 
 void	ft_two_numbers(t_first *first, int selection)
 {
@@ -19,6 +23,10 @@ void	ft_two_numbers(t_first *first, int selection)
 	if (stack->content > stack->next->content)
 		ft_swap(first, selection);
 }
+
+/*
+ * Sort three numbers
+*/
 
 void	ft_three_numbers(t_first *first, int selection)
 {
@@ -44,6 +52,10 @@ void	ft_three_numbers(t_first *first, int selection)
 		ft_rotate(first, selection);
 }
 
+/*
+ * Sort four numbers
+*/
+
 void	ft_four_numbers(t_first *first_a, t_first *first_b)
 {
 	t_list	*stack_a;
@@ -58,6 +70,10 @@ void	ft_four_numbers(t_first *first_a, t_first *first_b)
 	if (first_a->first->content != ft_is_smallest(first_a))
 		ft_rotate(first_a, 0);
 }
+
+/*
+ * Sort five numbers
+*/
 
 void	ft_five_numbers(t_first *first_a, t_first *first_b)
 {
@@ -76,6 +92,10 @@ void	ft_five_numbers(t_first *first_a, t_first *first_b)
 	while (first_a->first->content != ft_is_smallest(first_a))
 		ft_rotate(first_a, 0);
 }
+
+/*
+ * Select algo for 2 to 5 numbers sorting
+*/
 
 void	ft_select_small(t_first *first_a, t_first *first_b, int argc)
 {

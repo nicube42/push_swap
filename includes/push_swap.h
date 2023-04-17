@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 09:04:52 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:44:19 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,5 @@ void    ft_push(t_first *first, t_first *first_b, int selection);
 
 void	ft_find_max_shift(t_first *first);
 void	ft_radix(t_first *first_a, t_first *first_b, int shift);
-
-
-void	ft_test_index(t_first *first_a);
-
 
 #endif

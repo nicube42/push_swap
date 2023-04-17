@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 14:54:42 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:56:45 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	ft_error(void)
 	ft_printf("error\n");
 	exit(1);
 }
+
+/*
+ * Find biggest number and return it
+ * Also stock it in first->biggest
+*/
 
 int	ft_is_biggest(t_first *first)
 {
@@ -39,6 +44,10 @@ int	ft_is_biggest(t_first *first)
 	return (tmp->content);
 }
 
+/*
+ * Find smallest number and return it
+*/
+
 int	ft_is_smallest(t_first *first)
 {
 	t_list	*stack;
@@ -54,6 +63,10 @@ int	ft_is_smallest(t_first *first)
 	}
 	return (tmp->content);
 }
+
+/*
+ * Index all numbers from 0 to size -1
+*/
 
 void	ft_index(t_first *first)
 {
@@ -80,6 +93,10 @@ void	ft_index(t_first *first)
 		i++;
 	}
 }
+
+/*
+ * Check if it's quicker to reverse rotate or rotate
+*/
 
 void	ft_prepare_push(t_first *first_a, t_first *first_b)
 {

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 10:38:40 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:49:15 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+ * Initialize list
+*/
 
 t_first	*ft_init_list()
 {
@@ -31,6 +35,10 @@ t_first	*ft_init_list()
 	return (first);
 }
 
+/*
+ * Instert given number at the beggining of the list
+*/
+
 void	ft_insert_before_list(t_first *first, int new_nbr)
 {
     t_list *new = malloc(sizeof(*new));
@@ -47,6 +55,10 @@ void	ft_insert_before_list(t_first *first, int new_nbr)
     first->count++;
 }
 
+/*
+ * Instert given number at the end of the list
+*/
+
 void	ft_insert_list(t_first *first, int new_nbr)
 {
 	t_list *new = malloc(sizeof(*new));
@@ -61,6 +73,9 @@ void	ft_insert_list(t_first *first, int new_nbr)
     first->count++;
 }
 
+/*
+ * Destroy list and free 
+*/
 
 void	ft_destroy_list(t_first *first)
 {
@@ -88,6 +103,10 @@ void	ft_destroy_list(t_first *first)
     free(to_del);
     first->count--;
 }
+
+/*
+ * Display list, for testing
+*/
 
 void	ft_display_list(t_first *first)
 {

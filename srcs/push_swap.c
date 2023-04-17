@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 13:58:44 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:44:11 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-Test if only digits are entered in command line arguments, if the number 
-enters in a int and if 2 numbers are the same
+ * Test if only digits are entered in command line arguments, if the number 
+ * enters in a int and if 2 numbers are the same
 */
 
 int	ft_parsing(int ac, char **av, t_first *first)
@@ -56,6 +56,10 @@ int	ft_parsing(int ac, char **av, t_first *first)
 	return (ret);
 }
 
+/*
+ * Fill list with numbers from argv
+*/
+
 void	ft_fill_list(int ac, char **av, t_first *first)
 {
 	int	i;
@@ -67,6 +71,10 @@ void	ft_fill_list(int ac, char **av, t_first *first)
 		i++;
 	}
 }
+
+/*
+ * Check if numbers are in order
+*/
 
 void	ft_check_if_sorted(t_first *first)
 {
@@ -81,18 +89,6 @@ void	ft_check_if_sorted(t_first *first)
 		stack = stack->next;
 	}
 	exit (0);
-}
-
-void	ft_test_index(t_first *first_a)
-{
-	t_list *list;
-
-	list = first_a->first;
-	while (list)
-	{
-		ft_printf("%d = %d\n",list->content, list->index);
-		list = list->next;
-	}
 }
 
 int	main(int argc, char **argv)

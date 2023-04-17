@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:47:54 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 10:25:44 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:53:41 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+ * Swap the first two elements of a given list
+*/
 
 void	ft_swap(t_first *first, int	selection)
 {
@@ -27,6 +31,11 @@ void	ft_swap(t_first *first, int	selection)
 	else
 		ft_printf("sb\n");
 }
+
+/*
+ * All numbers are pushed to the next element in the list
+ * Last becomes first
+*/
 
 void	ft_reverse_rotate(t_first *first, int selection)
 {
@@ -53,6 +62,11 @@ void	ft_reverse_rotate(t_first *first, int selection)
 	else
 		ft_printf("rrb\n");
 }
+
+/*
+ * All numbers are pushed to the previous element in the list
+ * first becomes last
+*/
 
 void	ft_rotate(t_first *first, int selection)
 {
@@ -84,6 +98,11 @@ void	ft_rotate(t_first *first, int selection)
 	else
 		ft_printf("rb\n");
 }
+
+/*
+ * Push first number of list "first" to the first element
+ * of list "first_b"
+*/
 
 void	ft_push(t_first *first, t_first *first_b, int selection)
 {
