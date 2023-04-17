@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 16:34:26 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 18:58:52 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,16 @@ void	ft_check_if_sorted(t_first *first)
 	exit (0);
 }
 
+void	ft_clean_exit(t_first *first_a)
+{
+	while (first_a)
+	{
+		ft_destroy_list(first_a);
+	}
+	//free(first_a);
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		error;
@@ -101,7 +111,10 @@ int	main(int argc, char **argv)
 	first_b = ft_init_list();
 	error = ft_parsing(argc, argv, first);
 	if (error == 1)
-		ft_error();
+	{
+		ft_printf("error\n");
+		ft_clean_exit(first);
+	}
 	ft_check_if_sorted(first);
 	ft_index(first);
 	if (argc <= 6)
@@ -114,9 +127,6 @@ int	main(int argc, char **argv)
 
 	ft_display_list(first);
 	ft_display_list(first_b);
-	
-	free(first);
-	free(first->first);
-	free(first->last);
+	ft_clean_exit(first);
 	return (0);
 }

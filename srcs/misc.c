@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 16:46:23 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 18:49:17 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ Print "error" and exit the program in case of an incorrect entry
 */
 
 void	ft_error(void)
-{
-	ft_printf("error\n");
-	exit(1);
-}
+{}
 
 /*
  * Find biggest number and return it

@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 16:43:08 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 18:24:30 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void	ft_push(t_first *first, t_first *first_b, int selection);
 
 void	ft_find_max_shift(t_first *first);
 void	ft_radix(t_first *first_a, t_first *first_b, int shift);
+
+void	ft_clean_exit(t_first *first_a);
 
 #endif
