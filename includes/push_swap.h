@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:44:19 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:43:08 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int		ft_is_smallest(t_first *first);
 void	ft_index(t_first *first);
 void	ft_prepare_push(t_first *first, t_first *first_b);
 
-t_first	*ft_init_list();
+t_first	*ft_init_list(void);
 void	ft_insert_before_list(t_first *first, int new_nbr);
 void	ft_insert_list(t_first *first, int new_nbr);
 void	ft_destroy_list(t_first *first);
 void	ft_display_list(t_first *first);
 
-void    ft_swap(t_first *list, int selection);
-void    ft_reverse_rotate(t_first *first, int selection);
-void    ft_rotate(t_first *first, int selection);
-void    ft_push(t_first *first, t_first *first_b, int selection);
+void	ft_swap(t_first *list, int selection);
+void	ft_reverse_rotate(t_first *first, int selection);
+void	ft_rotate(t_first *first, int selection);
+void	ft_push(t_first *first, t_first *first_b, int selection);
 
 void	ft_find_max_shift(t_first *first);
 void	ft_radix(t_first *first_a, t_first *first_b, int shift);

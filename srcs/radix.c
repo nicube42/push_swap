@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:58:42 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:46:00 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:49:42 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_find_max_shift(t_first *first)
 	while (((first->count - 1) >> first->max_shift) != 0)
 		first->max_shift++;
 	first->size = first->count;
-
 }
 
 /*

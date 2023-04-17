@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:51:26 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:59:15 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:49:51 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	ft_two_numbers(t_first *first, int selection)
 {
 	t_list	*stack;
+
 	stack = first->first;
 	if (stack->content > stack->next->content)
 		ft_swap(first, selection);
@@ -31,24 +32,28 @@ void	ft_two_numbers(t_first *first, int selection)
 void	ft_three_numbers(t_first *first, int selection)
 {
 	t_list	*stack;
-	
+
 	stack = first->first;
 	if (stack->content < stack->next->content && stack->content
-			> stack->next->next->content)
+		> stack->next->next->content)
 		ft_reverse_rotate(first, selection);
-	else if (stack->content > stack->next->content && stack->next->content > stack->next->next->content)
+	else if (stack->content > stack->next->content && stack->next->content
+		> stack->next->next->content)
 	{
 		ft_swap(first, selection);
 		ft_reverse_rotate(first, selection);
 	}
-	else if (stack->content < stack->next->next->content && stack->next->next->content < stack->next->content)
+	else if (stack->content < stack->next->next->content
+		&& stack->next->next->content < stack->next->content)
 	{
 		ft_swap(first, selection);
 		ft_rotate(first, selection);
 	}
-	else if (stack->content > stack->next->content && stack->content < stack->next->next->content)
+	else if (stack->content > stack->next->content
+		&& stack->content < stack->next->next->content)
 		ft_swap(first, selection);
-	else if (stack->content > stack->next->next->content && stack->next->content < stack->next->next->content)
+	else if (stack->content > stack->next->next->content
+		&& stack->next->content < stack->next->next->content)
 		ft_rotate(first, selection);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:56:45 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:46:23 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ void	ft_prepare_push(t_first *first_a, t_first *first_b)
 	while (stack_a != NULL)
 	{
 		ft_index(first_a);
-		if (first_b->first->content > ft_is_biggest(first_a) || first_b->first->content < ft_is_smallest(first_a))
+		if (first_b->first->content > ft_is_biggest(first_a)
+			|| first_b->first->content < ft_is_smallest(first_a))
 		{
 			while (first_a->first->content != ft_is_smallest(first_a))
 			{
@@ -120,7 +121,8 @@ void	ft_prepare_push(t_first *first_a, t_first *first_b)
 		}
 		else
 		{
-			while (first_b->first->content > first_a->first->content || first_b->first->content < first_a->last->content)
+			while (first_b->first->content > first_a->first->content
+				|| first_b->first->content < first_a->last->content)
 			{
 				if (first_a->count / 2 <= stack_a->index)
 					ft_rotate(first_a, 0);

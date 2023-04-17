@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:44:11 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:34:26 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_parsing(int ac, char **av, t_first *first)
 	int		*stack;
 
 	stack = ft_calloc(ac, sizeof(int));
-	if(!stack)
+	if (!stack)
 		ft_error();
 	i = 1;
 	max_int = 2147483647;
@@ -111,7 +111,12 @@ int	main(int argc, char **argv)
 		ft_find_max_shift(first);
 		ft_radix(first, first_b, 0);
 	}
-    ft_display_list(first);
+
+	ft_display_list(first);
 	ft_display_list(first_b);
+	
+	free(first);
+	free(first->first);
+	free(first->last);
 	return (0);
 }

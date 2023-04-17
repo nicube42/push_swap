@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:47:54 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 15:53:41 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 16:52:16 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
  * Swap the first two elements of a given list
 */
 
-void	ft_swap(t_first *first, int	selection)
+void	ft_swap(t_first *first, int selection)
 {
 	int		tmp;
-	t_list	*stack = first->first;
+	t_list	*stack;
 
+	stack = first->first;
 	if (stack == NULL || stack->next == NULL)
 		return ;
 	tmp = stack->content;
