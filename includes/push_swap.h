@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 14:35:02 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:04:52 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_first
 	struct s_list	*last;
 	struct s_list	*biggest;
 	int				count;
+	int				size;
 	int				max_shift;
 }					t_first;
 

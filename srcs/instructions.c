@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:47:54 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/14 13:49:10 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:25:44 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,23 @@ void	ft_swap(t_first *first, int	selection)
 void	ft_reverse_rotate(t_first *first, int selection)
 {
 	int		tmp;
+	int		tmp2;
 	t_list	*stack;
 
 	stack = first->last;
 	if (stack == NULL || stack->previous == NULL)
 		return ;
 	tmp = first->last->content;
+	tmp2 = first->last->index;
 	while (stack != NULL && stack->previous)
 	{
 		stack->content = stack->previous->content;
+		stack->index = stack->previous->index;
 		stack = stack->previous;
 	}
 	stack = first->first;
 	stack->content = tmp;
+	stack->index = tmp2;
 	if (selection == 0)
 		ft_printf("rra\n");
 	else
@@ -91,6 +95,7 @@ void	ft_push(t_first *first, t_first *first_b, int selection)
 	b = first_b->first;
 	tmp = first->first;
 	ft_insert_before_list(first_b, first->first->content);
+	first_b->first->index = first->first->index;
 	ft_destroy_list(first);
 	if (selection == 0)
 		ft_printf("pa\n");
