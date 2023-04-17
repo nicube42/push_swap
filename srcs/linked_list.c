@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 18:54:28 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 19:29:45 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_first	*ft_init_list(void)
 	previous = malloc(sizeof(*previous));
 	content = malloc(sizeof(*content));
 	if (first == NULL || content == NULL || previous == NULL)
-		exit(1);
+		ft_error();
 	content->content = 0;
 	content->next = NULL;
 	content->previous = NULL;
@@ -49,7 +49,7 @@ void	ft_insert_before_list(t_first *first, int new_nbr)
 
 	new = malloc(sizeof(*new));
 	if (first == NULL || new == NULL)
-		exit(1);
+		ft_error();
 	new->content = new_nbr;
 	new->next = first->first;
 	new->previous = NULL;
@@ -119,7 +119,7 @@ void	ft_display_list(t_first *first)
 	t_list	*actual;
 
 	if (first == NULL)
-		exit(1);
+		ft_error();
 	actual = first->first;
 	while (actual != NULL)
 	{

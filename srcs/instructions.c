@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:47:54 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 16:52:16 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 19:36:54 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,27 @@ void	ft_rotate(t_first *first, int selection)
 	tmp2 = stack->index;
 	while (stack != NULL)
 	{
-		if (stack->next == NULL)
-		{
-			stack->content = tmp;
-			stack->index = tmp2;
-		}
-		else
-		{
-			stack->content = stack->next->content;
-			stack->index = stack->next->index;
-		}
+		ft_rotate_2(stack, tmp, tmp2);
 		stack = stack->next;
 	}
 	if (selection == 0)
 		ft_printf("ra\n");
 	else
 		ft_printf("rb\n");
+}
+
+void	ft_rotate_2(t_list *stack, int tmp, int tmp2)
+{
+	if (stack->next == NULL)
+	{
+		stack->content = tmp;
+		stack->index = tmp2;
+	}
+	else
+	{
+		stack->content = stack->next->content;
+		stack->index = stack->next->index;
+	}
 }
 
 /*

@@ -6,18 +6,11 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:04:35 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 18:49:17 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 19:37:54 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-Print "error" and exit the program in case of an incorrect entry
-*/
-
-void	ft_error(void)
-{}
 
 /*
  * Find biggest number and return it
@@ -105,28 +98,33 @@ void	ft_prepare_push(t_first *first_a, t_first *first_b)
 	while (stack_a != NULL)
 	{
 		ft_index(first_a);
-		if (first_b->first->content > ft_is_biggest(first_a)
-			|| first_b->first->content < ft_is_smallest(first_a))
-		{
-			while (first_a->first->content != ft_is_smallest(first_a))
-			{
-				if (first_a->count / 2 <= stack_a->index)
-					ft_rotate(first_a, 0);
-				else
-					ft_reverse_rotate(first_a, 0);
-			}
-		}
-		else
-		{
-			while (first_b->first->content > first_a->first->content
-				|| first_b->first->content < first_a->last->content)
-			{
-				if (first_a->count / 2 <= stack_a->index)
-					ft_rotate(first_a, 0);
-				else
-					ft_reverse_rotate(first_a, 0);
-			}
-		}
+		ft_prepare_push_2(first_a, first_b, stack_a);
 		stack_a = stack_a->next;
+	}
+}
+
+void	ft_prepare_push_2(t_first *first_a, t_first *first_b, t_list *stack_a)
+{
+	if (first_b->first->content > ft_is_biggest(first_a)
+		|| first_b->first->content < ft_is_smallest(first_a))
+	{
+		while (first_a->first->content != ft_is_smallest(first_a))
+		{
+			if (first_a->count / 2 <= stack_a->index)
+				ft_rotate(first_a, 0);
+			else
+				ft_reverse_rotate(first_a, 0);
+		}
+	}
+	else
+	{
+		while (first_b->first->content > first_a->first->content
+			|| first_b->first->content < first_a->last->content)
+		{
+			if (first_a->count / 2 <= stack_a->index)
+				ft_rotate(first_a, 0);
+			else
+				ft_reverse_rotate(first_a, 0);
+		}
 	}
 }

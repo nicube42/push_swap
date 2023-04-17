@@ -6,55 +6,11 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 18:58:52 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/17 19:19:33 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
- * Test if only digits are entered in command line arguments, if the number 
- * enters in a int and if 2 numbers are the same
-*/
-
-int	ft_parsing(int ac, char **av, t_first *first)
-{
-	size_t	i;
-	size_t	j;
-	long	max_int;
-	long	min_int;
-	int		ret;
-	int		*stack;
-
-	stack = ft_calloc(ac, sizeof(int));
-	if (!stack)
-		ft_error();
-	i = 1;
-	max_int = 2147483647;
-	min_int	= -2147483648;
-	while (i < ft_strlen(av[i]))
-	{
-		if ((ft_atol(av[i]) > max_int) || (ft_atol(av[i]) < min_int))
-			return (1);
-		j = 0;
-		while (j < ft_strlen(av[i]))
-		{
-			if (ft_isdigit(av[i][j]) == 0 && av[i][0] != '-')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	i = 1;
-	while ((int)i < ac)
-	{
-		stack[i - 1] = ft_atoi(av[i]);
-		i++;
-	}
-	ret = ft_isduplicate(ac, stack);
-	ft_fill_list(ac, av, first);
-	return (ret);
-}
 
 /*
  * Fill list with numbers from argv
@@ -91,16 +47,6 @@ void	ft_check_if_sorted(t_first *first)
 	exit (0);
 }
 
-void	ft_clean_exit(t_first *first_a)
-{
-	while (first_a)
-	{
-		ft_destroy_list(first_a);
-	}
-	//free(first_a);
-	exit(1);
-}
-
 int	main(int argc, char **argv)
 {
 	int		error;
@@ -124,9 +70,7 @@ int	main(int argc, char **argv)
 		ft_find_max_shift(first);
 		ft_radix(first, first_b, 0);
 	}
-
 	ft_display_list(first);
-	ft_display_list(first_b);
 	ft_clean_exit(first);
 	return (0);
 }
