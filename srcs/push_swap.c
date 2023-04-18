@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/18 15:14:55 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 19:27:12 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_free_stack(t_first *first)
 		free(stack);
 		stack = tmp;
 	}
+	free(first);
 	stack = NULL;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/18 11:23:08 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:29:05 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 t_first	*ft_init_list(void)
 {
 	t_first	*first;
-	t_first	*previous;
 	t_list	*content;
 
 	first = malloc(sizeof(*first));
-	previous = malloc(sizeof(*previous));
 	content = malloc(sizeof(*content));
-	if (first == NULL || content == NULL || previous == NULL)
+	if (first == NULL || content == NULL)
 		ft_error(first);
 	content->content = 0;
 	content->next = NULL;
@@ -36,6 +34,7 @@ t_first	*ft_init_list(void)
 	first->size = 0;
 	first->first = NULL;
 	first->last = NULL;
+	free(content);
 	return (first);
 }
 
