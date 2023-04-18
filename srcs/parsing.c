@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:12:56 by nicolasdiam       #+#    #+#             */
-/*   Updated: 2023/04/17 19:49:49 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 11:22:19 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_check_if_duplicate(int ac, char **av, t_first *first)
 
 	stack = ft_calloc(ac, sizeof(int));
 	if (!stack)
-		ft_error();
+		ft_error(first);
 	i = 1;
 	while ((int)i < ac)
 	{
@@ -65,9 +65,11 @@ int	ft_check_if_duplicate(int ac, char **av, t_first *first)
 	return (ret);
 }
 
-void	ft_error(void)
+void	ft_error(t_first *first)
 {
 	ft_printf("error\n");
+	if (first)
+		ft_free_stack(first);
 	exit(1);
 }
 
@@ -77,9 +79,35 @@ void	ft_error(void)
 
 void	ft_clean_exit(t_first *first_a)
 {
-	while (first_a)
-	{
-		ft_destroy_list(first_a);
-	}
+	ft_free_stack(first_a);
 	exit(0);
+}
+
+int	ft_one_arg(int ac, char **av, t_first *first)
+{
+	char	**tmp;
+	int		error;
+	int		i;
+
+	if (ac == 2)
+	{
+		i = 0;
+		av[0] = ft_strjoin(av[0], " ");
+		av[1] = ft_strjoin(av[0], av[1]);
+		tmp = ft_split(av[1], ' ');
+		while (tmp[i])
+			i++;
+		error = ft_parsing(i, tmp, first);
+		while (tmp[++i])
+			free(tmp[i]);
+		free (tmp);
+		ft_error_parsing(error, first);
+		return (i);
+	}
+	else
+	{
+		error = ft_parsing(ac, av, first);
+		ft_error_parsing(error, first);
+		return (ac);
+	}
 }

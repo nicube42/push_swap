@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 19:19:33 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 11:39:03 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,40 @@ void	ft_fill_list(int ac, char **av, t_first *first)
 }
 
 /*
+ * Free all compenents of linked list
+*/
+
+void	ft_free_stack(t_first *first)
+{
+	t_list	*stack;
+	t_list	*tmp;
+
+	stack = first->first;
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
+	stack = NULL;
+}
+
+/*
+ * Free first and print error if parsing error
+*/
+
+void	ft_error_parsing(int error, t_first *first)
+{
+	if (error == 1)
+	{
+		ft_printf("error\n");
+		ft_clean_exit(first);
+	}
+}
+
+/*
  * Check if numbers are in order
 */
 
@@ -44,23 +78,18 @@ void	ft_check_if_sorted(t_first *first)
 			return ;
 		stack = stack->next;
 	}
+	ft_free_stack(first);
 	exit (0);
 }
 
 int	main(int argc, char **argv)
 {
-	int		error;
 	t_first	*first;
 	t_first	*first_b;
 
 	first = ft_init_list();
 	first_b = ft_init_list();
-	error = ft_parsing(argc, argv, first);
-	if (error == 1)
-	{
-		ft_printf("error\n");
-		ft_clean_exit(first);
-	}
+	argc = ft_one_arg(argc, argv, first);
 	ft_check_if_sorted(first);
 	ft_index(first);
 	if (argc <= 6)
@@ -70,7 +99,6 @@ int	main(int argc, char **argv)
 		ft_find_max_shift(first);
 		ft_radix(first, first_b, 0);
 	}
-	ft_display_list(first);
 	ft_clean_exit(first);
 	return (0);
 }

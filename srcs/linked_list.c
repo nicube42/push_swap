@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 19:29:45 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 11:23:08 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_first	*ft_init_list(void)
 	previous = malloc(sizeof(*previous));
 	content = malloc(sizeof(*content));
 	if (first == NULL || content == NULL || previous == NULL)
-		ft_error();
+		ft_error(first);
 	content->content = 0;
 	content->next = NULL;
 	content->previous = NULL;
@@ -49,7 +49,7 @@ void	ft_insert_before_list(t_first *first, int new_nbr)
 
 	new = malloc(sizeof(*new));
 	if (first == NULL || new == NULL)
-		ft_error();
+		ft_error(first);
 	new->content = new_nbr;
 	new->next = first->first;
 	new->previous = NULL;
@@ -70,6 +70,8 @@ void	ft_insert_list(t_first *first, int new_nbr)
 	t_list	*new;
 
 	new = malloc(sizeof(*new));
+	if (first == NULL || new == NULL)
+		ft_error(first);
 	new->previous = first->last;
 	new->next = NULL;
 	new->content = new_nbr;
@@ -119,7 +121,7 @@ void	ft_display_list(t_first *first)
 	t_list	*actual;
 
 	if (first == NULL)
-		ft_error();
+		exit(1);
 	actual = first->first;
 	while (actual != NULL)
 	{

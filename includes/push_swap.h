@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 19:37:09 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 11:22:10 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_glob
 int		main(int argc, char **argv);
 void	ft_fill_list(int ac, char **av, t_first *list);
 void	ft_check_if_sorted(t_first *first);
+void	ft_error_parsing(int error, t_first *first);
+void	ft_free_stack(t_first *first);
 
 void	ft_two_numbers(t_first *first, int selection);
 void	ft_three_numbers(t_first *first, int selection);
@@ -77,7 +79,8 @@ void	ft_radix(t_first *first_a, t_first *first_b, int shift);
 
 int		ft_parsing(int ac, char **av, t_first *list);
 int		ft_check_if_duplicate(int ac, char **av, t_first *first);
-void	ft_error(void);
+void	ft_error(t_first *first_a);
 void	ft_clean_exit(t_first *first_a);
+int		ft_one_arg(int ac, char **av, t_first *first);
 
 #endif

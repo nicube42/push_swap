@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:58:42 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/17 16:49:42 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/18 11:39:35 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+ * Stock numbers of shifts needed in first->max_shift
+*/
+
 void	ft_find_max_shift(t_first *first)
 {
-	while (((first->count - 1) >> first->max_shift) != 0)
+	while (((first->count) >> first->max_shift) != 0)
 		first->max_shift++;
 	first->size = first->count;
 }
