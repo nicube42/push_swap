@@ -1,3 +1,8 @@
+RED = \033[0;31m
+NOCOLOR = \033[0m
+GREEN = \033[0;32m
+RED = \033[1;31m
+
 PATH_SRC =			./srcs/
 PATH_LIBFT =		./libft_printf/
 PATH_OBJS =			./objs/
@@ -14,26 +19,34 @@ RM = rm -rf
 
 GUI = python3 pyviz.py `ruby -e "puts (1..10).to_a.shuffle.join(' ')"`
 
-all: $(NAME)
+all: logo $(NAME)
+
+logo :
+			@tput setaf 2; cat ascii/42pushswap; tput setaf default
 
 $(NAME): $(OBJS)
-	@echo objects done!!
 	@$(MAKE) -C $(PATH_LIBFT)
+	@echo "Assembling $(NAME)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo program done!
+	@echo "${GREEN}✓${NOCOLOR}"
+	@echo "$(GREEN)Compilation is done$(NOCOLOR)"
 
 $(PATH_OBJS)%.o:	$(PATH_SRC)%.c
+	@echo "Compiling $^: "
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "${GREEN}✓${NOCOLOR}"
 
 clean:
-	$(RM) $(PATH_OBJS)
-	@echo obj removed!
+	@echo "${RED}Cleaning objects in push_swap: ${NOCOLOR}"
+	@$(RM) $(PATH_OBJS)
+	@echo "${GREEN}✓${NOCOLOR}"
 
 fclean: clean
-	make fclean -C $(PATH_LIBFT)
-	$(RM) $(NAME)
-	@echo clean everything
+	@make fclean -C $(PATH_LIBFT)
+	@echo "${RED}Cleaning all in push_swap: ${NOCOLOR}"
+	@$(RM) $(NAME)
+	@echo "${GREEN}✓${NOCOLOR}"
 
 re: fclean all
 

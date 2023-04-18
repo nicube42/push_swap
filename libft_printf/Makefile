@@ -1,3 +1,8 @@
+RED = \033[0;31m
+NOCOLOR = \033[0m
+GREEN = \033[0;32m
+RED = \033[1;31m
+
 NAME		=	libftprintf.a
 
 SRC_DIR			=	srcs
@@ -69,21 +74,27 @@ all: $(NAME)
 
 -include $(DEPS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-		$(CC) $(CFLAGS) $(DFLAGS) -c -o $@ $< $(IFLAGS)
+		@$(CC) $(CFLAGS) $(DFLAGS) -c -o $@ $< $(IFLAGS)
 
 $(OBJ_DIR):
-		mkdir -p $(OBJ_DIR)
-		mkdir -p $(OBJ_DIR)/$(LIBFT_DIR)
-		mkdir -p $(OBJ_DIR)/$(PRINTF_DIR)
+		@mkdir -p $(OBJ_DIR)
+		@mkdir -p $(OBJ_DIR)/$(LIBFT_DIR)
+		@mkdir -p $(OBJ_DIR)/$(PRINTF_DIR)
 
 $(NAME): $(OBJS)
-		ar rc $(NAME) $(OBJS)
-		ranlib	$(NAME)
+		@echo "Assembling $(NAME)"
+		@ar rc $(NAME) $(OBJS)
+		@ranlib	$(NAME)
+		@echo "${GREEN}✓${NOCOLOR}"
 
 clean:
-		$(RM) $(OBJ_DIR)
+		@echo "${RED}Cleaning objects in libftprintf: ${NOCOLOR}"
+		@$(RM) $(OBJ_DIR)
+		@echo "${GREEN}✓${NOCOLOR}"
 
 fclean: clean
-		$(RM) $(NAME)
+		@echo "${RED}cleaning all in libftprintf: ${NOCOLOR}"
+		@$(RM) $(NAME)
+		@echo "${GREEN}✓${NOCOLOR}"
 
 re: fclean all

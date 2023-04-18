@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/18 11:39:03 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:14:55 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	main(int argc, char **argv)
 		ft_find_max_shift(first);
 		ft_radix(first, first_b, 0);
 	}
+	ft_display_list(first);
 	ft_clean_exit(first);
 	return (0);
 }
