@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:12:56 by nicolasdiam       #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:36 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:48:09 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,16 @@
 int	ft_parsing(int ac, char **av, t_first *first)
 {
 	size_t	i;
-	size_t	j;
 	int		ret;
 
 	i = 1;
-	if (ac == 2)
-		ft_error(first);
-	while (i < ft_strlen(av[i]))
+	while (i < (size_t)ac)
 	{
 		if ((ft_atol(av[i]) > MAX_INT) || (ft_atol(av[i]) < MIN_INT))
 			return (1);
-		j = 0;
-		while (j < ft_strlen(av[i]))
+		if (ft_better_isdigit(av, i) == 0)
 		{
-			if (ft_isdigit(av[i][j]) == 0 && av[i][0] != '-')
-				return (1);
-			j++;
+			return (1);
 		}
 		i++;
 	}
@@ -71,7 +65,7 @@ int	ft_check_if_duplicate(int ac, char **av, t_first *first)
 
 void	ft_error(t_first *first)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	if (first)
 		ft_free_stack(first);
 	exit(1);

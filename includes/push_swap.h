@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/18 11:22:10 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:35:42 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define MIN_INT -2147483648
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "../libft_printf/includes/libft.h"
 # include "../libft_printf/includes/ft_printf.h"
 
@@ -82,5 +83,7 @@ int		ft_check_if_duplicate(int ac, char **av, t_first *first);
 void	ft_error(t_first *first_a);
 void	ft_clean_exit(t_first *first_a);
 int		ft_one_arg(int ac, char **av, t_first *first);
+
+int		ft_better_isdigit(char **av, int i);
 
 #endif

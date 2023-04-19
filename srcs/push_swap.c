@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/19 11:18:24 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:52:10 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_error_parsing(int error, t_first *first)
 {
 	if (error == 1)
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		ft_clean_exit(first);
 	}
 }
@@ -94,6 +94,10 @@ int	main(int argc, char **argv)
 	first = ft_init_list();
 	first_b = ft_init_list();
 	argc = ft_one_arg(argc, argv, first);
+	if (argc == 1)
+		ft_error(first);
+	if (argc == 2)
+		ft_clean_exit(first);
 	ft_check_if_sorted(first);
 	ft_index(first);
 	if (argc <= 6)
