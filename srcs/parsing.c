@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:12:56 by nicolasdiam       #+#    #+#             */
-/*   Updated: 2023/04/19 09:40:08 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:47:36 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_parsing(int ac, char **av, t_first *first)
 	int		ret;
 
 	i = 1;
+	if (ac == 2)
+		ft_error(first);
 	while (i < ft_strlen(av[i]))
 	{
 		if ((ft_atol(av[i]) > MAX_INT) || (ft_atol(av[i]) < MIN_INT))
@@ -69,7 +71,7 @@ int	ft_check_if_duplicate(int ac, char **av, t_first *first)
 
 void	ft_error(t_first *first)
 {
-	ft_printf("error\n");
+	ft_printf("Error\n");
 	if (first)
 		ft_free_stack(first);
 	exit(1);

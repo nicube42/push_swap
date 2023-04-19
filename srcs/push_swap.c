@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:56:41 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/19 09:29:34 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:18:24 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_error_parsing(int error, t_first *first)
 {
 	if (error == 1)
 	{
-		ft_printf("error\n");
+		ft_printf("Error\n");
 		ft_clean_exit(first);
 	}
 }
@@ -89,6 +89,8 @@ int	main(int argc, char **argv)
 	t_first	*first;
 	t_first	*first_b;
 
+	if (argc == 1)
+		return (0);
 	first = ft_init_list();
 	first_b = ft_init_list();
 	argc = ft_one_arg(argc, argv, first);
