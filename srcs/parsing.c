@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:12:56 by nicolasdiam       #+#    #+#             */
-/*   Updated: 2023/04/18 11:22:19 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:40:08 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	ft_check_if_duplicate(int ac, char **av, t_first *first)
 	}
 	ret = ft_isduplicate(ac, stack);
 	ft_fill_list(ac, av, first);
+	if (stack)
+		free(stack);
 	return (ret);
 }
 
@@ -94,20 +96,19 @@ int	ft_one_arg(int ac, char **av, t_first *first)
 		i = 0;
 		av[0] = ft_strjoin(av[0], " ");
 		av[1] = ft_strjoin(av[0], av[1]);
+		free(av[0]);
 		tmp = ft_split(av[1], ' ');
 		while (tmp[i])
 			i++;
 		error = ft_parsing(i, tmp, first);
+		i = 0;
 		while (tmp[++i])
 			free(tmp[i]);
 		free (tmp);
 		ft_error_parsing(error, first);
 		return (i);
 	}
-	else
-	{
-		error = ft_parsing(ac, av, first);
-		ft_error_parsing(error, first);
-		return (ac);
-	}
+	error = ft_parsing(ac, av, first);
+	ft_error_parsing(error, first);
+	return (ac);
 }

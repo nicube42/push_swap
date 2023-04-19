@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:27:21 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/18 19:29:05 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/19 09:26:17 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ t_first	*ft_init_list(void)
 	first->size = 0;
 	first->first = NULL;
 	first->last = NULL;
-	free(content);
+	if (content)
+		free(content);
 	return (first);
 }
 
@@ -107,7 +108,8 @@ void	ft_destroy_list(t_first *first)
 	}
 	else
 		to_del->next->previous = to_del->previous;
-	free(to_del);
+	if (to_del)
+		free(to_del);
 	first->count--;
 }
 
